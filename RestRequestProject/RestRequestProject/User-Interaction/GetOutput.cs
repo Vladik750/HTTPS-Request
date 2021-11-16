@@ -2,9 +2,9 @@
 
 namespace RestRequestProject
 {
-    class OutputToConsole:IUserOutputProcessing
+    class GetOutput:IUserOutputProcessing
     {
-        void IUserOutputProcessing.Output(string output)
+        void IUserOutputProcessing.OutputToConsole(string output)
         {
             Console.WriteLine(output);
         }

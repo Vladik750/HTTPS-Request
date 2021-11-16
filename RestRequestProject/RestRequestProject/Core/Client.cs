@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace RestRequestProject
 {
-    class Client
+    public class Client
     {
         public /*static*/ RestClient client;
 

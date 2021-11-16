@@ -6,10 +6,9 @@ namespace RestRequestProject
     class ManageRequest : IRequestResponseProcessing
     {
         //adds a search parameter to request
-        IRestRequest IRequestResponseProcessing.BuildRequest(IUserInputProcessing input, IRestRequest request)
+        IRestRequest IRequestResponseProcessing.BuildRequest(string input, IRestRequest request)
         {
-            string attribute = input.GetUserInput();
-            return request.AddParameter("search", attribute);
+            return request.AddParameter("search", input);
         }
 
         IRestResponse IRequestResponseProcessing.MakeRequest(Client client, IRestRequest request)
@@ -19,7 +18,6 @@ namespace RestRequestProject
 
         void IRequestResponseProcessing.PushResponseToDB(IRestResponse response, string db)
         {
-            
             throw new NotImplementedException();
         }
     }
