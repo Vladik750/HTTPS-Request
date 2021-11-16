@@ -2,7 +2,7 @@
 
 namespace RestRequestProject
 {
-    interface IUserInputProcessing
+    public interface IUserInputProcessing
     {
         bool IsInputValid();
         string GetUserConsoleInput();

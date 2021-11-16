@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace RestRequestProject
 {
-    public class ManageRequest : IRequestResponseProcessing
+    public class ManageRequestResponse : IRequestResponseProcessing
     {
         //adds a search parameter to request
         IRestRequest IRequestResponseProcessing.BuildRequest(string input, IRestRequest request)

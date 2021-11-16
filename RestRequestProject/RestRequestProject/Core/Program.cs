@@ -15,12 +15,12 @@ namespace RestRequestProject
             string userInput = input.GetUserConsoleInput();
 
             IRestRequest myRequest = new RestRequest();
-            IRequestResponseProcessing processor = new ManageRequest();
+            IRequestResponseProcessing processor = new ManageRequestResponse();
             myRequest = processor.BuildRequest(userInput, myRequest);
             IRestResponse resp = processor.MakeRequest(myClient, myRequest);
 
-            processor.ShowResponseToConsole(resp);
-            //processor.ShowResponseToHTML(resp);
+            //processor.ShowResponseToConsole(resp);
+            processor.ShowResponseToHTML(resp);
         }
     }
 }

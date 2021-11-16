@@ -3,7 +3,7 @@ using System.IO;
 
 namespace RestRequestProject
 {
-    class GetInput:IUserInputProcessing
+    public class GetInput:IUserInputProcessing
     {
         public string inputString;
 
