@@ -9,5 +9,8 @@ namespace RestRequestProject
 {
     interface IRequestResponseProcessing
     {
+        IRestResponse MakeRequest(Client client, IRestRequest request);
+        IRestRequest BuildRequest(IUserInputProcessing input, IRestRequest request);
+        void PushResponseToDB(IRestResponse response, string db);
     }
 }

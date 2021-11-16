@@ -3,18 +3,24 @@ using RestSharp;
 
 namespace RestRequestProject
 {
-    class ManageRequest : IMakeRequest, IBuildRequest
+    class ManageRequest : IRequestResponseProcessing
     {
         //adds a search parameter to request
-        IRestRequest IBuildRequest.BuildRequest(IGetUserInput input, IRestRequest request )
+        IRestRequest IRequestResponseProcessing.BuildRequest(IUserInputProcessing input, IRestRequest request)
         {
             string attribute = input.GetUserInput();
-            return request.AddParameter("search", attribute);            
+            return request.AddParameter("search", attribute);
         }
 
-        IRestResponse IMakeRequest.MakeRequest(Client client, IRestRequest request)
+        IRestResponse IRequestResponseProcessing.MakeRequest(Client client, IRestRequest request)
         {
             return client.client.Get(request);
+        }
+
+        void IRequestResponseProcessing.PushResponseToDB(IRestResponse response, string db)
+        {
+            
+            throw new NotImplementedException();
         }
     }
 }

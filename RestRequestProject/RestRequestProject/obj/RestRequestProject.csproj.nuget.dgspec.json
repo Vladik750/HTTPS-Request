@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\source\\repos\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj": {}
+    "C:\\Users\\USER\\Desktop\\Git repos\\RestRequestProject\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\source\\repos\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj": {
+    "C:\\Users\\USER\\Desktop\\Git repos\\RestRequestProject\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Desktop\\Git repos\\RestRequestProject\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj",
         "projectName": "RestRequestProject",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj",
+        "projectPath": "C:\\Users\\USER\\Desktop\\Git repos\\RestRequestProject\\RestRequestProject\\RestRequestProject\\RestRequestProject.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\RestRequestProject\\RestRequestProject\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Desktop\\Git repos\\RestRequestProject\\RestRequestProject\\RestRequestProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",

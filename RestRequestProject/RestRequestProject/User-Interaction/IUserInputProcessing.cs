@@ -2,7 +2,7 @@
 
 namespace RestRequestProject
 {
-    interface IGetUserInput
+    interface IUserInputProcessing
     {
         bool IsInputValid();
         bool GetUserInput(string pathToInput);

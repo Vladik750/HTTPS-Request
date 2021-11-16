@@ -2,7 +2,7 @@
 
 namespace RestRequestProject
 {
-    class GetConsoleInput:IGetUserInput
+    class GetConsoleInput:IUserInputProcessing
     {
         public string inputString;
 
@@ -11,17 +11,17 @@ namespace RestRequestProject
         {
             inputString = Console.ReadLine();
         }
-        bool IGetUserInput.GetUserInput(string pathToInput)
+        bool IUserInputProcessing.GetUserInput(string pathToInput)
         {
             throw new NotImplementedException();
         }
 
-        string IGetUserInput.GetUserInput()
+        string IUserInputProcessing.GetUserInput()
         {
             return inputString;
         }
 
-        bool IGetUserInput.IsInputValid()
+        bool IUserInputProcessing.IsInputValid()
         {
             throw new NotImplementedException();
         }

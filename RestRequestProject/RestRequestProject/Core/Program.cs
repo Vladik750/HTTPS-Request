@@ -9,14 +9,14 @@ namespace RestRequestProject
         {
             Client myClient = new Client();
             string parameter = "name";
-            SayToUser askId = new SayToUser("Enter " + parameter + ": ");
-            IGetUserInput consoleInput = new GetConsoleInput();
+            IUserOutputProcessing askId = new OutputToConsole();
+            askId.Output("Enter " + parameter + ":");
+            IUserInputProcessing consoleInput = new GetConsoleInput();
 
             IRestRequest myRequest = new RestRequest();
-            IBuildRequest build = new ManageRequest();
-            myRequest = build.BuildRequest(consoleInput, myRequest);
-            IMakeRequest makeRequest = new ManageRequest();
-            IRestResponse resp = makeRequest.MakeRequest(myClient, myRequest);
+            IRequestResponseProcessing processor = new ManageRequest();
+            myRequest = processor.BuildRequest(consoleInput, myRequest);
+            IRestResponse resp = processor.MakeRequest(myClient, myRequest);
 
             IShowResponse consoleResponse = new ResponseToConsole();
             //IShowResponse responseHtml = new ResponseToHTML();
