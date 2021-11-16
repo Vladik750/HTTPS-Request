@@ -19,10 +19,8 @@ namespace RestRequestProject
             myRequest = processor.BuildRequest(userInput, myRequest);
             IRestResponse resp = processor.MakeRequest(myClient, myRequest);
 
-            IShowResponse consoleResponse = new ResponseToConsole();
-            //IShowResponse responseHtml = new ResponseToHTML();
-            consoleResponse.ShowResponse(resp);
-            //responseHtml.ShowResponse(resp);
+            processor.ShowResponseToConsole(resp);
+            //processor.ShowResponseToHTML(resp);
         }
     }
 }

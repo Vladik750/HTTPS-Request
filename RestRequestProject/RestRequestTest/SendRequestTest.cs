@@ -10,7 +10,7 @@ namespace RestRequestTest
         public void TestMethod1()
         {
             Client client = new Client();
-
+            
         }
     }
 }

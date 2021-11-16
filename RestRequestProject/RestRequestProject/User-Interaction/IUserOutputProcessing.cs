@@ -4,6 +4,6 @@ namespace RestRequestProject
 {
     interface IUserOutputProcessing
     {
-        void Output(string output);
+        void OutputToConsole(string output);
     }
 }
