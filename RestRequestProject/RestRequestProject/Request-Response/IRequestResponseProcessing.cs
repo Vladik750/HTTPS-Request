@@ -10,5 +10,6 @@ namespace RestRequestProject
         void PushResponseToDB(IRestResponse response, string db);
         void ShowResponseToConsole(IRestResponse response);
         void ShowResponseToHTML(IRestResponse response);
+        void ShowResponseToHTML(IRestResponse response, string path);
     }
 }

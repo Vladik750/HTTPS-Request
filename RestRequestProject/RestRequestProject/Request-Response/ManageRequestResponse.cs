@@ -57,5 +57,32 @@ namespace RestRequestProject
 
             process.Start();
         }
+
+        void IRequestResponseProcessing.ShowResponseToHTML(IRestResponse response, string path)
+        {
+            FileStream fs = File.Create(path);
+            fs.Close();
+            // write response to a file
+            StreamWriter streamWriter = new StreamWriter(path);
+            streamWriter.WriteLine("<html>");
+            streamWriter.WriteLine("<head>");
+            streamWriter.WriteLine("  <title>HTML-Document</title>");
+            streamWriter.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
+            streamWriter.WriteLine("</head>");
+            streamWriter.WriteLine("<body>");
+            streamWriter.WriteLine(response.Content.ToString());
+            streamWriter.WriteLine("</body>");
+            streamWriter.WriteLine("</html>");
+            streamWriter.Close();
+
+            //Open the file in the default browser
+            Process process = new Process();
+            ProcessStartInfo processInfo = new ProcessStartInfo();
+            processInfo.UseShellExecute = true;
+            processInfo.FileName = path.ToString();
+            process.StartInfo = processInfo;
+
+            process.Start();
+        }
     }
 }

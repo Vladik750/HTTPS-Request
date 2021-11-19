@@ -5,7 +5,7 @@ namespace RestRequestProject
 {
     class Program
     {
-        static void Main(string[] args)
+        static void  Main(string[] args)
         {
             Client myClient = new Client();
             string parameter = "name";

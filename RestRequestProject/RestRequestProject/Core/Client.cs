@@ -3,9 +3,10 @@ using RestSharp;
 
 namespace RestRequestProject
 {
+    //all clases are public for accessability of UnitTests;
     public class Client
     {
-        public /*static*/ RestClient client;
+        public RestClient client;
 
         public Client()
         {
