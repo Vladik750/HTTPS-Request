@@ -7,11 +7,11 @@ namespace RestRequestProject
     {
         public string inputString;
 
-        string IUserInputProcessing.GetUserConsoleInput()
+        public string GetUserConsoleInput()
         {
             return inputString = Console.ReadLine();
         }
-
+            
         string IUserInputProcessing.GetUserFileInput(string path)
         {
             StreamReader reader = new StreamReader(path);

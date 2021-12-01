@@ -1,15 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using RestSharp;
 
 namespace RestRequestProject
 {
     public interface IRequestResponseProcessing
     {
-        IRestResponse MakeRequest(Client client, IRestRequest request);
-        IRestRequest BuildRequest(string input, IRestRequest request);
-        void PushResponseToDB(IRestResponse response, string db);
-        void ShowResponseToConsole(IRestResponse response);
-        void ShowResponseToHTML(IRestResponse response);
-        void ShowResponseToHTML(IRestResponse response, string path);
+        IRestResponse<List<Planet>> MakeRequest(string persName);
+        IRestResponse<List<Planet>> MakeRequest(IRestRequest request);
     }
 }

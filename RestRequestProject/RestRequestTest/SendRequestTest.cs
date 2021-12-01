@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+/*using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestRequestProject;
 using RestSharp;
 using System.IO;
@@ -13,7 +13,7 @@ namespace RestRequestTest
         {
             ///compare response given from request and
             ///response given from textfile
-            Client myClient = new Client();
+            APIClient myClient = new APIClient();
             IRestRequest myRequest = new RestRequest();
             IRequestResponseProcessing processor = new ManageRequestResponse();
             myRequest = processor.BuildRequest("luke", myRequest);
@@ -32,7 +32,7 @@ namespace RestRequestTest
         {
             ///compare response given from request and
             ///response given from textfile
-            Client myClient = new Client();
+            APIClient myClient = new APIClient();
             IRestRequest myRequest = new RestRequest();
             IRequestResponseProcessing processor = new ManageRequestResponse();
             //enter the name that doesn`t exist
@@ -51,13 +51,13 @@ namespace RestRequestTest
         public void SameRequestsComparisonTest()
         {
             //compare two responses from same requests
-            Client myClient1 = new Client();
+            APIClient myClient1 = new APIClient();
             IRestRequest myRequest1 = new RestRequest();
             IRequestResponseProcessing processor1 = new ManageRequestResponse();
             myRequest1 = processor1.BuildRequest("c-3po", myRequest1);
             IRestResponse response1 = processor1.MakeRequest(myClient1, myRequest1);
 
-            Client myClient2 = new Client();
+            APIClient myClient2 = new APIClient();
             IRestRequest myRequest2 = new RestRequest();
             IRequestResponseProcessing processor2 = new ManageRequestResponse();
             myRequest2 = processor2.BuildRequest("c-3po", myRequest2);
@@ -69,7 +69,7 @@ namespace RestRequestTest
         [TestMethod]
         public void ResponseToHTMLTest()
         {
-            Client myClient = new Client();
+            APIClient myClient = new APIClient();
             IRestRequest myRequest = new RestRequest();
             IRequestResponseProcessing processor = new ManageRequestResponse();
             myRequest = processor.BuildRequest("Obi-Wan Kenobi", myRequest);
@@ -90,3 +90,4 @@ namespace RestRequestTest
         }
     }
 }
+*/
