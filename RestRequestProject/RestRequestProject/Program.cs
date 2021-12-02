@@ -24,20 +24,9 @@ namespace RestRequestProject
 
             output.ShowResponseToConsole(response);
 
+            DBClient dbCLient = new DBClient();
+            dbCLient.PushResponseToDB(response);
 
-            ///show response to json
-            ///serialize json to object(dto)
-            ///insert object to db
-            ///
-            /*APIClient.CreateClient();
-
-            IRestRequest request = new RestRequest();
-            request.AddParameter("search", "tatooine");
-            IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(request);
-            for (int i = 0; i < response.Data.Count; i++)
-            {
-                response.Data[i].Show();
-            }*/
 
         }
     }

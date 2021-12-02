@@ -21,10 +21,10 @@ namespace RestRequestProject
     public class PlanetDTO
     {
         public string Name { get; set; }
-        public double Diameter { get; set; }
+        public float Diameter { get; set; }
         public string Climate { get; set; }
         public string Gravity { get; set; }
-        public double Population { get; set; }
+        public int Population { get; set; }
 
         public void ShowPlanetToConsole()
         {
