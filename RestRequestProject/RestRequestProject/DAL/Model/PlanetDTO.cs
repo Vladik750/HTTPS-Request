@@ -15,6 +15,16 @@ namespace RestRequestProject
                 Results[i].ShowPlanetToConsole();
             }
         }
+
+        public Planet()
+        {
+            this.Results = new List<PlanetDTO>();
+        }
+
+        public Planet(List<PlanetDTO> list)
+        {
+            this.Results = list;
+        }
     }
 
     //serialization JSON array objects into DTO
@@ -36,5 +46,13 @@ namespace RestRequestProject
             Console.WriteLine("Population: " + this.Population);
         }
 
+        public PlanetDTO()
+        {
+            this.Name = "";
+            this.Diameter = 0;
+            this.Climate = "";
+            this.Gravity = "";
+            this.Population = 0;
+        }
     }
 }

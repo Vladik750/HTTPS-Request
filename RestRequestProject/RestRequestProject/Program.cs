@@ -18,16 +18,27 @@ namespace RestRequestProject
             string userInput = input.GetUserConsoleInput();
 
             IRequestResponseProcessing processor = new ManageRequestResponse();
-            IRestResponse<List<Planet>> response = processor.MakeRequest(userInput);
+            Planet response = processor.MakeRequest(userInput);
 
             IUserOutputProcessing output = new GetOutput();
 
             output.ShowResponseToConsole(response);
 
-            DBClient dbCLient = new DBClient();
-            dbCLient.PushResponseToDB(response);
+            /*DBClient.CreateDBClient();
+            DBManager dbManager = new DBManager();
+            dbManager.InsertIntoDB(response);*/
 
+            /*RestClient client = new RestClient("https://swapi.dev/api/planets");
+            IRestRequest request = new RestRequest();
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("search", "tatooine");
+            IRestResponse response = client.Get(request);
+            Console.WriteLine(response.Content.ToString());
+            Console.WriteLine("---");
+            string param = request.Parameters[1].ToString();
+            Console.WriteLine(param);*/
 
+            ///request comparicon by request parameters 
         }
     }
 }

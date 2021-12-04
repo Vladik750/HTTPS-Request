@@ -8,8 +8,8 @@ namespace RestRequestProject
 {
     public class ManageRequestResponse : IRequestResponseProcessing
     {
-        //private IRestRequest request;
         //adds a search parameter to request
+        
         public IRestRequest BuildRequest(string input)
         {
             IRestRequest request = new RestRequest();
@@ -17,19 +17,76 @@ namespace RestRequestProject
             request.AddParameter("search", input);
             return request;
         }
-        public IRestResponse<List<Planet>> MakeRequest(string persName)
+
+        public bool CheckForCache(string requestParameter)
         {
-            IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(BuildRequest(persName));
-            return response;
-            //return APIClient.client.Get(BuildRequest(persName));
+            int exist=0;
+            DBClient.CreateDBClient();
+            DBClient.connection.Open();
+
+            var command = DBClient.connection.CreateCommand();
+            command.CommandText = $"set @exist = (select EXISTS(SELECT * from response WHERE" +
+                $" RequestParameter='{requestParameter}') );select @exist";
+            var reader = command.ExecuteReader();
+            if(reader.Read())
+            {
+                //String.Format(exist,reader["@exist"]);
+                exist = (int)(long)reader["@exist"];
+            }
+            reader.Close();
+            DBClient.connection.Close(); 
+            if(exist==1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        public Planet MakeRequest(string persName)
+        {
+            IRestRequest request = BuildRequest(persName);
+            string requestParameter = request.Parameters[1].ToString();
+            
+            if(CheckForCache(requestParameter))
+            {
+                DBManager dbManager = new DBManager();
+                return dbManager.SelectFromDB(requestParameter);
+            }
+            else
+            {
+                IDBProcessing dbManager = new DBManager();
+
+                IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(request);
+                dbManager.InsertIntoDB(requestParameter,response);
+                Planet planet = new Planet();
+                planet = response.Data[0];
+
+                return planet;
+            } 
         }
 
-        public IRestResponse<List<Planet>> MakeRequest(IRestRequest request)
+        public Planet MakeRequest(IRestRequest request)
         {
             request.AddHeader("Accept", "application/json");
-            IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(request);
-            return response;
-            //return APIClient.client.Get(request);
+            string requestParameter = request.Parameters[1].ToString();
+            if(CheckForCache(requestParameter))
+            {
+                DBManager dbManager = new DBManager();
+                return dbManager.SelectFromDB(requestParameter);
+            }
+            else
+            {
+                IDBProcessing dbManager = new DBManager();
+                IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(request);
+                dbManager.InsertIntoDB(requestParameter,response);
+
+                Planet planet = new Planet();
+                planet = response.Data[0];
+                return planet;
+            }
         }
 
     }

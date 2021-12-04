@@ -5,7 +5,7 @@ namespace RestRequestProject
 {
     public interface IRequestResponseProcessing
     {
-        IRestResponse<List<Planet>> MakeRequest(string persName);
-        IRestResponse<List<Planet>> MakeRequest(IRestRequest request);
+        Planet MakeRequest(string persName);
+        Planet MakeRequest(IRestRequest request);
     }
 }

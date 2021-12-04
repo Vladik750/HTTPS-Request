@@ -9,7 +9,7 @@ namespace RestRequestProject
 {
     class DBModel
     {
-        public static int responseId = 0;
+        private string requestParameter;
         private string name;
         private float diameter;
         private string climate;
@@ -18,7 +18,6 @@ namespace RestRequestProject
 
         public DBModel(IRestResponse<List<Planet>> response)
         {
-            responseId++;
             this.name = response.Data[0].Results[0].Name;
             this.diameter = response.Data[0].Results[0].Diameter;
             this.climate = response.Data[0].Results[0].Climate;
@@ -28,6 +27,14 @@ namespace RestRequestProject
 
         //Getters as soon as fileds should be private to save immutability of an instance.
         //ResponseId is a static filed, so it can be accesed without getter.
+        public void SetRequestParameter(string requestParameter)
+        {
+            this.requestParameter = requestParameter;
+        }
+        public string GetRequestParameter()
+        {
+            return this.requestParameter;
+        }
         public string GetName()
         {
             return this.name;

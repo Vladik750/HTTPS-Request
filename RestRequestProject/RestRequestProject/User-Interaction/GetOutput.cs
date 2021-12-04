@@ -14,18 +14,12 @@ namespace RestRequestProject
             Console.WriteLine(output);
         }
 
-        public void ShowResponseToConsole(IRestResponse<List<Planet>> response)
+        public void ShowResponseToConsole(Planet response)
         {
-            //Console.WriteLine(response.Content.ToString());
-           // IUserOutputProcessing consoleResponse = new GetOutput();
-            //consoleResponse.OutputToConsole(response.Content.ToString());
-            for(int i =0;i<response.Data.Count;i++)
-            {
-                response.Data[i].Show();
-            }
+            response.Show();
         }
 
-        public void ShowResponseToHTML(IRestResponse<List<Planet>> response)
+        public void ShowResponseToHTML(Planet response)
         {
             string path = @"C:\Users\USER\Desktop\Cyber\RestRequestProject\RestRequestProject\RestRequestTest";
             FileStream fs = File.Create(path);
@@ -38,11 +32,10 @@ namespace RestRequestProject
             streamWriter.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
             streamWriter.WriteLine("</head>");
             streamWriter.WriteLine("<body>");
-            for(int i=0;i<response.Data.Count;i++)
+            for(int i=0;i<response.Results.Count;i++)
             {
-                streamWriter.WriteLine(response.Data[i].ToString());
+                streamWriter.WriteLine(response.Results[i].ToString());
             }
-            //streamWriter.WriteLine(response.Content.ToString());
             streamWriter.WriteLine("</body>");
             streamWriter.WriteLine("</html>");
             streamWriter.Close();
@@ -57,7 +50,7 @@ namespace RestRequestProject
             process.Start();
         }
 
-        public void ShowResponseToHTML(IRestResponse<List<Planet>> response, string path)
+        public void ShowResponseToHTML(Planet response, string path)
         {
             FileStream fs = File.Create(path);
             fs.Close();
@@ -69,10 +62,9 @@ namespace RestRequestProject
             streamWriter.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
             streamWriter.WriteLine("</head>");
             streamWriter.WriteLine("<body>");
-            //streamWriter.WriteLine(response.Content.ToString());
-            for (int i = 0; i < response.Data.Count; i++)
+            for (int i = 0; i < response.Results.Count; i++)
             {
-                streamWriter.WriteLine(response.Data[i].ToString());
+                streamWriter.WriteLine(response.Results[i].ToString());
             }
             streamWriter.WriteLine("</body>");
             streamWriter.WriteLine("</html>");

@@ -6,8 +6,8 @@ namespace RestRequestProject
     interface IUserOutputProcessing
     {
         void OutputToConsole(string output);
-        void ShowResponseToConsole(IRestResponse<List<Planet>> response);
-        void ShowResponseToHTML(IRestResponse<List<Planet>> response);
-        void ShowResponseToHTML(IRestResponse<List<Planet>> response, string path);
+        void ShowResponseToConsole(Planet response);
+        void ShowResponseToHTML(Planet response);
+        void ShowResponseToHTML(Planet response, string path);
     }
 }
