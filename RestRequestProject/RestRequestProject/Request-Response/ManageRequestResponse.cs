@@ -9,7 +9,6 @@ namespace RestRequestProject
     public class ManageRequestResponse : IRequestResponseProcessing
     {
         //adds a search parameter to request
-        
         public IRestRequest BuildRequest(string input)
         {
             IRestRequest request = new RestRequest();
@@ -22,19 +21,18 @@ namespace RestRequestProject
         {
             int exist=0;
             DBClient.CreateDBClient();
-            DBClient.connection.Open();
+            DBClient.OpenConnection();
 
-            var command = DBClient.connection.CreateCommand();
+            var command = DBClient.CreateCommand();
             command.CommandText = $"set @exist = (select EXISTS(SELECT * from response WHERE" +
                 $" RequestParameter='{requestParameter}') );select @exist";
             var reader = command.ExecuteReader();
             if(reader.Read())
             {
-                //String.Format(exist,reader["@exist"]);
                 exist = (int)(long)reader["@exist"];
             }
             reader.Close();
-            DBClient.connection.Close(); 
+            DBClient.CloseConnection(); 
             if(exist==1)
             {
                 return true;
@@ -45,15 +43,17 @@ namespace RestRequestProject
             }
             
         }
-        public Planet MakeRequest(string persName)
+        public Planet MakeRequest(string input)
         {
-            IRestRequest request = BuildRequest(persName);
+            IRestRequest request = BuildRequest(input);
             string requestParameter = request.Parameters[1].ToString();
             
             if(CheckForCache(requestParameter))
             {
                 DBManager dbManager = new DBManager();
+                requestAttempts = request.Attempts;
                 return dbManager.SelectFromDB(requestParameter);
+                
             }
             else
             {
@@ -63,6 +63,7 @@ namespace RestRequestProject
                 dbManager.InsertIntoDB(requestParameter,response);
                 Planet planet = new Planet();
                 planet = response.Data[0];
+                requestAttempts = request.Attempts;
 
                 return planet;
             } 
@@ -75,6 +76,7 @@ namespace RestRequestProject
             if(CheckForCache(requestParameter))
             {
                 DBManager dbManager = new DBManager();
+                requestAttempts = request.Attempts;
                 return dbManager.SelectFromDB(requestParameter);
             }
             else
@@ -85,8 +87,16 @@ namespace RestRequestProject
 
                 Planet planet = new Planet();
                 planet = response.Data[0];
+                requestAttempts = request.Attempts;
+
                 return planet;
             }
+        }
+
+        private int requestAttempts;
+        public int GetRequestAttempts()
+        {
+            return requestAttempts;
         }
 
     }

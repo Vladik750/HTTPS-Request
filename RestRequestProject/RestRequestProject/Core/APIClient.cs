@@ -13,5 +13,6 @@ namespace RestRequestProject
             client = new RestClient("https://swapi.dev/api/planets");
         }
 
+        
     }
 }

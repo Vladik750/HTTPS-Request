@@ -11,24 +11,24 @@ namespace RestRequestProject
         public void InsertIntoDB(string requestParameter,IRestResponse<List<Planet>> response)
         {
             DBClient.CreateDBClient();
-            DBClient.connection.Open();
+            DBClient.OpenConnection();
             DBModel dbModel = new DBModel(response);
             
 
-            var command = DBClient.connection.CreateCommand();
+            var command = DBClient.CreateCommand();
             command.CommandText = $"insert into response(RequestParameter,Name,Diameter,Climate,Gravity,Population,Time) " +
                 $"values('{requestParameter}','{dbModel.GetName()}',{dbModel.GetDiameter()},'{dbModel.GetClimate()}','{dbModel.GetGravity()}',{dbModel.GetPopulation()},now());";
             command.ExecuteReader();
-            DBClient.connection.Close();
+            DBClient.CloseConnection();
         }
 
         public Planet SelectFromDB(string requestParameter)
         {
             DBClient.CreateDBClient();
-            var command = DBClient.connection.CreateCommand();
+            var command = DBClient.CreateCommand();
             Planet planet = new Planet();
             PlanetDTO dto = new PlanetDTO();
-            DBClient.connection.Open();
+            DBClient.OpenConnection();
             command.CommandText = $"select * from response where RequestParameter = '{requestParameter}'";
             var reader = command.ExecuteReader();
             if (reader.Read())
@@ -45,7 +45,7 @@ namespace RestRequestProject
                 planet = planetTemp;
             }
             reader.Close();
-            DBClient.connection.Close();
+            DBClient.CloseConnection();
             return planet;
 
         }

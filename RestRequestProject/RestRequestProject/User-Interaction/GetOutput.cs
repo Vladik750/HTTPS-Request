@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace RestRequestProject
 {
-    class GetOutput:IUserOutputProcessing
+    public class GetOutput:IUserOutputProcessing
     {
         public void OutputToConsole(string output)
         {
@@ -19,26 +19,47 @@ namespace RestRequestProject
             response.Show();
         }
 
+        public void ShowResponseToTXT(Planet response, string fileName)
+        {
+            FileStream fs = File.Create(fileName);
+            fs.Close();
+
+            StreamWriter sw = new StreamWriter(fileName);
+            for(int i=0;i<response.Results.Count;i++)
+            {
+                sw.WriteLine(response.Results[i].Name.ToString());
+                sw.WriteLine(response.Results[i].Diameter.ToString());
+                sw.WriteLine(response.Results[i].Climate.ToString());
+                sw.WriteLine(response.Results[i].Gravity.ToString());
+                sw.WriteLine(response.Results[i].Population.ToString());
+            }
+            sw.Close();
+        }
+
         public void ShowResponseToHTML(Planet response)
         {
             string path = @"C:\Users\USER\Desktop\Cyber\RestRequestProject\RestRequestProject\RestRequestTest";
             FileStream fs = File.Create(path);
             fs.Close();
             // write response to a file
-            StreamWriter streamWriter = new StreamWriter(path);
-            streamWriter.WriteLine("<html>");
-            streamWriter.WriteLine("<head>");
-            streamWriter.WriteLine("  <title>HTML-Document</title>");
-            streamWriter.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
-            streamWriter.WriteLine("</head>");
-            streamWriter.WriteLine("<body>");
+            StreamWriter sw = new StreamWriter(path);
+            sw.WriteLine("<html>");
+            sw.WriteLine("<head>");
+            sw.WriteLine("  <title>HTML-Document</title>");
+            sw.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
+            sw.WriteLine("</head>");
+            sw.WriteLine("<body>");
             for(int i=0;i<response.Results.Count;i++)
             {
-                streamWriter.WriteLine(response.Results[i].ToString());
+                sw.WriteLine(response.Results[i].Name.ToString());
+                sw.WriteLine(response.Results[i].Diameter.ToString());
+                sw.WriteLine(response.Results[i].Climate.ToString());
+                sw.WriteLine(response.Results[i].Gravity.ToString());
+                sw.WriteLine(response.Results[i].Population.ToString());
             }
-            streamWriter.WriteLine("</body>");
-            streamWriter.WriteLine("</html>");
-            streamWriter.Close();
+            sw.WriteLine("</body>");
+            sw.WriteLine("</html>");
+            sw.Close();
 
             //Open the file in the default browser
             Process process = new Process();
@@ -55,20 +76,24 @@ namespace RestRequestProject
             FileStream fs = File.Create(path);
             fs.Close();
             // write response to a file
-            StreamWriter streamWriter = new StreamWriter(path);
-            streamWriter.WriteLine("<html>");
-            streamWriter.WriteLine("<head>");
-            streamWriter.WriteLine("  <title>HTML-Document</title>");
-            streamWriter.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
-            streamWriter.WriteLine("</head>");
-            streamWriter.WriteLine("<body>");
+            StreamWriter sw = new StreamWriter(path);
+            sw.WriteLine("<html>");
+            sw.WriteLine("<head>");
+            sw.WriteLine("  <title>HTML-Document</title>");
+            sw.WriteLine("  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />");
+            sw.WriteLine("</head>");
+            sw.WriteLine("<body>");
             for (int i = 0; i < response.Results.Count; i++)
             {
-                streamWriter.WriteLine(response.Results[i].ToString());
+                sw.WriteLine(response.Results[i].Name.ToString());
+                sw.WriteLine(response.Results[i].Diameter.ToString());
+                sw.WriteLine(response.Results[i].Climate.ToString());
+                sw.WriteLine(response.Results[i].Gravity.ToString());
+                sw.WriteLine(response.Results[i].Population.ToString());
             }
-            streamWriter.WriteLine("</body>");
-            streamWriter.WriteLine("</html>");
-            streamWriter.Close();
+            sw.WriteLine("</body>");
+            sw.WriteLine("</html>");
+            sw.Close();
 
             //Open the file in the default browser
             Process process = new Process();

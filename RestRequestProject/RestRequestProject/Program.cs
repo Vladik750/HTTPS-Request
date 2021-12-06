@@ -22,23 +22,18 @@ namespace RestRequestProject
 
             IUserOutputProcessing output = new GetOutput();
 
-            output.ShowResponseToConsole(response);
+            string fileName = "file.txt";
+            output.ShowResponseToTXT(response,fileName);
 
-            /*DBClient.CreateDBClient();
-            DBManager dbManager = new DBManager();
-            dbManager.InsertIntoDB(response);*/
+            /*string s = "https://swapi.dev/api/planets";
+            RestClient cl = new RestClient();
+            IRestRequest req = new RestRequest(s);
+            //req.AddParameter("search", "toyda");
+            IRestResponse resp = cl.Get(req);
+            Console.WriteLine(resp.Content.ToString());*/
 
-            /*RestClient client = new RestClient("https://swapi.dev/api/planets");
-            IRestRequest request = new RestRequest();
-            request.AddHeader("Accept", "application/json");
-            request.AddParameter("search", "tatooine");
-            IRestResponse response = client.Get(request);
-            Console.WriteLine(response.Content.ToString());
-            Console.WriteLine("---");
-            string param = request.Parameters[1].ToString();
-            Console.WriteLine(param);*/
 
-            ///request comparicon by request parameters 
+
         }
     }
 }
