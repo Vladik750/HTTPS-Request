@@ -1,0 +1,5 @@
+Name: Tatooine
+Diameter: 10465
+Climate: arid
+Gravity: 1 standard
+Population: 200000

@@ -7,5 +7,6 @@ namespace RestRequestProject
     {
         Planet MakeRequest(string input);
         Planet MakeRequest(IRestRequest request);
+        void ShowAttempts();
     }
 }

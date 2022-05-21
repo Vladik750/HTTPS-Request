@@ -9,28 +9,31 @@ namespace RestRequestProject
     {
         static void  Main(string[] args)
         {
-            APIClient.CreateClient();
+            /* APIClient.CreateClient();
 
-            string parameter = "name";
-            IUserOutputProcessing askName = new GetOutput();
-            askName.OutputToConsole("Enter " + parameter + ":");
-            IUserInputProcessing input = new GetInput();
-            string userInput = input.GetUserConsoleInput();
+             string parameter = "name";
+             IUserOutputProcessing askName = new GetOutput();
+             askName.OutputToConsole("Enter " + parameter + ":");
+             IUserInputProcessing input = new GetInput();
+             string userInput = input.GetUserConsoleInput();
 
-            IRequestResponseProcessing processor = new ManageRequestResponse();
-            Planet response = processor.MakeRequest(userInput);
+             IRequestResponseProcessing processor = new ManageRequestResponse();
+             Planet response = processor.MakeRequest(userInput);
 
-            IUserOutputProcessing output = new GetOutput();
+             IUserOutputProcessing output = new GetOutput();
 
-            string fileName = "file.txt";
-            output.ShowResponseToTXT(response,fileName);
+             //string fileName = "file.txt";
+             //output.ShowResponseToTXT(response,fileName);
+             //output.ShowResponseToHTML(response);
+             output.ShowResponseToConsole(response);
+             processor.ShowAttempts();*/
 
-            /*string s = "https://swapi.dev/api/planets";
+            string s = "https://swapi.dev/api/planets";
             RestClient cl = new RestClient();
             IRestRequest req = new RestRequest(s);
-            //req.AddParameter("search", "toyda");
+            req.AddParameter("search", "toyda");
             IRestResponse resp = cl.Get(req);
-            Console.WriteLine(resp.Content.ToString());*/
+            Console.WriteLine(resp.Content.ToString());
 
 
 

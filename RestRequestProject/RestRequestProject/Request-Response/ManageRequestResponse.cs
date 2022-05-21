@@ -8,6 +8,30 @@ namespace RestRequestProject
 {
     public class ManageRequestResponse : IRequestResponseProcessing
     {
+        public Planet MakeRequest(IRestRequest request)
+        {
+            request.AddHeader("Accept", "application/json");
+            string requestParameter = request.Parameters[1].ToString();
+            if (CheckForCache(requestParameter))
+            {
+                DBManager dbManager = new DBManager();
+                requestAttempts = request.Attempts;
+                return dbManager.SelectFromDB(requestParameter);
+            }
+            else
+            {
+                IDBProcessing dbManager = new DBManager();
+                IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(request);
+                dbManager.InsertIntoDB(requestParameter, response);
+
+                Planet planet = new Planet();
+                planet = response.Data[0];
+                requestAttempts = request.Attempts;
+
+                return planet;
+            }
+        }
+
         //adds a search parameter to request
         public IRestRequest BuildRequest(string input)
         {
@@ -68,36 +92,20 @@ namespace RestRequestProject
                 return planet;
             } 
         }
-
-        public Planet MakeRequest(IRestRequest request)
+        
+        public void ShowAttempts()
         {
-            request.AddHeader("Accept", "application/json");
-            string requestParameter = request.Parameters[1].ToString();
-            if(CheckForCache(requestParameter))
-            {
-                DBManager dbManager = new DBManager();
-                requestAttempts = request.Attempts;
-                return dbManager.SelectFromDB(requestParameter);
-            }
-            else
-            {
-                IDBProcessing dbManager = new DBManager();
-                IRestResponse<List<Planet>> response = APIClient.client.Get<List<Planet>>(request);
-                dbManager.InsertIntoDB(requestParameter,response);
-
-                Planet planet = new Planet();
-                planet = response.Data[0];
-                requestAttempts = request.Attempts;
-
-                return planet;
-            }
+            GetOutput output = new GetOutput();
+            output.OutputToConsole("Attempts: "+requestAttempts.ToString());
         }
 
-        private int requestAttempts;
+        public int requestAttempts;
+
         public int GetRequestAttempts()
         {
             return requestAttempts;
         }
+       
 
     }
 }

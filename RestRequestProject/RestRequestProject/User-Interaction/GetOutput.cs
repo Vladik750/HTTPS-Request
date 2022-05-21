@@ -27,11 +27,11 @@ namespace RestRequestProject
             StreamWriter sw = new StreamWriter(fileName);
             for(int i=0;i<response.Results.Count;i++)
             {
-                sw.WriteLine(response.Results[i].Name.ToString());
-                sw.WriteLine(response.Results[i].Diameter.ToString());
-                sw.WriteLine(response.Results[i].Climate.ToString());
-                sw.WriteLine(response.Results[i].Gravity.ToString());
-                sw.WriteLine(response.Results[i].Population.ToString());
+                sw.WriteLine("Name: " +response.Results[i].Name.ToString());
+                sw.WriteLine("Diameter: "+response.Results[i].Diameter.ToString());
+                sw.WriteLine("Climate: "+response.Results[i].Climate.ToString());
+                sw.WriteLine("Gravity: "+response.Results[i].Gravity.ToString());
+                sw.WriteLine("Population: "+response.Results[i].Population.ToString());
             }
             sw.Close();
         }
@@ -51,11 +51,11 @@ namespace RestRequestProject
             sw.WriteLine("<body>");
             for(int i=0;i<response.Results.Count;i++)
             {
-                sw.WriteLine(response.Results[i].Name.ToString());
-                sw.WriteLine(response.Results[i].Diameter.ToString());
-                sw.WriteLine(response.Results[i].Climate.ToString());
-                sw.WriteLine(response.Results[i].Gravity.ToString());
-                sw.WriteLine(response.Results[i].Population.ToString());
+                sw.WriteLine("Name: "+response.Results[i].Name.ToString());
+                sw.WriteLine("Diameter: "+response.Results[i].Diameter.ToString());
+                sw.WriteLine("Climate: "+response.Results[i].Climate.ToString());
+                sw.WriteLine("Gravity: "+response.Results[i].Gravity.ToString());
+                sw.WriteLine("Population: "+response.Results[i].Population.ToString());
             }
             sw.WriteLine("</body>");
             sw.WriteLine("</html>");
@@ -85,11 +85,11 @@ namespace RestRequestProject
             sw.WriteLine("<body>");
             for (int i = 0; i < response.Results.Count; i++)
             {
-                sw.WriteLine(response.Results[i].Name.ToString());
-                sw.WriteLine(response.Results[i].Diameter.ToString());
-                sw.WriteLine(response.Results[i].Climate.ToString());
-                sw.WriteLine(response.Results[i].Gravity.ToString());
-                sw.WriteLine(response.Results[i].Population.ToString());
+                sw.WriteLine("Name: " + response.Results[i].Name.ToString());
+                sw.WriteLine("Diameter: " + response.Results[i].Diameter.ToString());
+                sw.WriteLine("Climate: " + response.Results[i].Climate.ToString());
+                sw.WriteLine("Gravity: " + response.Results[i].Gravity.ToString());
+                sw.WriteLine("Population: " + response.Results[i].Population.ToString());
             }
             sw.WriteLine("</body>");
             sw.WriteLine("</html>");

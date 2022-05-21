@@ -16,9 +16,9 @@ namespace RestRequestProject
                 {
                     Server = "localhost",
                     UserID = "root",
-                    Password = "Vladislav24",
+                    Password = "Vlghir9og9u9",
                     Port = 3306,
-                    Database = "responsesdb"
+                    Database = "mydb"
                 };
                 sb.AllowUserVariables=true;
                 connection = new MySqlConnection(sb.ConnectionString);
